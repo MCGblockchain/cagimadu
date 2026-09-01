@@ -68,7 +68,7 @@ export function Layout({ activeView, onNavigate, menuOpen, setMenuOpen, searchQu
           <div className="network-card-head"><span className="eth-gem small"><i /></span><span><small>Rede ativa</small><strong>Ethereum</strong></span></div>
           <div className="network-row"><span><i className="status-dot" /> Mainnet</span><strong>12.1s</strong></div>
         </div>
-        <p className="sidebar-foot">Dados simulados · MVP 0.1</p>
+        <p className="sidebar-foot">Ethereum RPC · MVP 0.2</p>
       </aside>
 
       <div className="workspace">
@@ -85,7 +85,7 @@ export function Layout({ activeView, onNavigate, menuOpen, setMenuOpen, searchQu
                 {searchQuery ? <button type="button" onClick={() => onSearchChange('')} aria-label="Limpar busca"><CloseIcon size={14} /></button> : <kbd>⌘ K</kbd>}
               </label>
             )}
-            <div className="topbar-network"><i className="status-dot" /><span>ETH</span><strong>$4.268,14</strong></div>
+            <div className="topbar-network"><i className="status-dot" /><span>ETH</span><strong>Mainnet</strong></div>
           </div>
         </header>
         <main className="main-content">{children}</main>

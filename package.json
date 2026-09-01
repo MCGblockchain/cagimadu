@@ -4,32 +4,50 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "concurrently -n frontend,api -c magenta,blue \"npm:dev:frontend\" \"npm:dev:api\"",
+    "dev:frontend": "vite",
+    "dev:api": "tsx watch backend/src/server.ts",
+    "build": "npm run build:frontend && npm run build:api",
+    "build:frontend": "tsc -b && vite build",
+    "build:api": "tsc -p backend/tsconfig.json",
     "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
+    "cors": "latest",
     "d3-array": "latest",
     "d3-scale": "latest",
     "d3-shape": "latest",
+    "dotenv": "latest",
+    "express": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "vite": "latest"
+    "viem": "latest",
+    "vite": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
     "@eslint/js": "latest",
     "@types/d3-array": "latest",
     "@types/d3-scale": "latest",
     "@types/d3-shape": "latest",
+    "@types/cors": "latest",
+    "@types/express": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/supertest": "latest",
+    "concurrently": "latest",
     "eslint": "latest",
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
+    "supertest": "latest",
+    "tsx": "latest",
     "typescript": "latest",
-    "typescript-eslint": "latest"
+    "typescript-eslint": "latest",
+    "vitest": "latest"
   }
 }

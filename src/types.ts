@@ -18,5 +18,49 @@ export interface BlockData {
 export interface FeePoint {
   time: string
   value: number
-  usd: number
+  usd?: number
+  blockNumber?: number
+}
+
+export interface ApiMeta {
+  source: 'ethereum-rpc'
+  cached: boolean
+  stale: boolean
+  updatedAt: string
+}
+
+export interface ApiResponse<T> {
+  data: T
+  meta: ApiMeta
+}
+
+export interface CurrentFeeData {
+  blockNumber: number
+  baseFeeGwei: number
+  priorityFeeGwei: number
+  recommendedFeeGwei: number
+  previousRecommendedFeeGwei: number
+  variationPercent: number
+  networkPressure: BlockData['difficulty']
+  estimates: {
+    transfer: { gasUnits: number; eth: number }
+    swap: { gasUnits: number; eth: number }
+    nftMint: { gasUnits: number; eth: number }
+  }
+  updatedAt: string
+}
+
+export interface FeeHistoryData {
+  points: Array<{
+    blockNumber: number
+    time: string
+    value: number
+    baseFeeGwei: number
+    priorityFeeGwei: number
+  }>
+  minimum: number
+  average: number
+  maximum: number
+  volatility: 'Baixa' | 'Moderada' | 'Alta'
+  blockCount: number
 }
