@@ -151,7 +151,7 @@ O projeto está configurado para funcionar como um único Web Service: o Express
 O Blueprint já configura:
 
 ```text
-Build Command: npm ci && npm run build
+Build Command: npm ci --include=dev && npm run build
 Start Command: npm start
 Health Check: /api/health
 Plan: Free
