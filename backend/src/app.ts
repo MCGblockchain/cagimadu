@@ -1,5 +1,7 @@
 import cors from 'cors'
 import express from 'express'
+import { existsSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { env } from './config/env.js'
 import { errorHandler, notFoundHandler } from './middleware/error-handler.js'
 import { blocksRoutes } from './routes/blocks.routes.js'
@@ -14,6 +16,8 @@ export const createApp = (dependencies: AppDependencies = {}) => {
   const app = express()
   const ethereum = dependencies.ethereum ?? ethereumService
   const allowedOrigins = env.CORS_ORIGIN.split(',').map((origin) => origin.trim())
+  const frontendDirectory = resolve(process.cwd(), 'dist')
+  const frontendIndex = resolve(frontendDirectory, 'index.html')
 
   app.disable('x-powered-by')
   app.use(cors({ origin: allowedOrigins }))
@@ -29,6 +33,21 @@ export const createApp = (dependencies: AppDependencies = {}) => {
   })
   app.use('/api/blocks', blocksRoutes(ethereum))
   app.use('/api/fees', feesRoutes(ethereum))
+
+  if (existsSync(frontendIndex)) {
+    app.use(express.static(frontendDirectory, {
+      index: 'index.html',
+      maxAge: process.env.NODE_ENV === 'production' ? '1h' : 0,
+    }))
+    app.use((request, response, next) => {
+      if (request.method === 'GET' && !request.path.startsWith('/api/')) {
+        response.sendFile(frontendIndex)
+        return
+      }
+      next()
+    })
+  }
+
   app.use(notFoundHandler)
   app.use(errorHandler)
 

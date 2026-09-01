@@ -7,6 +7,7 @@
     "dev": "concurrently -n frontend,api -c magenta,blue \"npm:dev:frontend\" \"npm:dev:api\"",
     "dev:frontend": "vite",
     "dev:api": "tsx watch backend/src/server.ts",
+    "start": "node dist-api/server.js",
     "build": "npm run build:frontend && npm run build:api",
     "build:frontend": "tsc -b && vite build",
     "build:api": "tsc -p backend/tsconfig.json",

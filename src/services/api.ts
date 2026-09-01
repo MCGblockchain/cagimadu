@@ -1,6 +1,6 @@
 import type { ApiResponse, BlockData, CurrentFeeData, FeeHistoryData } from '../types'
 
-const API_URL = (import.meta.env.VITE_API_URL ?? 'http://localhost:3333/api').replace(/\/$/, '')
+const API_URL = (import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL ?? 'http://localhost:3333/api')).replace(/\/$/, '')
 
 export class ApiError extends Error {
   constructor(message: string, public readonly status?: number) {

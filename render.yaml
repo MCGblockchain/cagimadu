@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: cagimadu
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ETH_RPC_URL
+        value: https://ethereum-rpc.publicnode.com
+      - key: RPC_TIMEOUT_MS
+        value: 8000
+      - key: BLOCK_CACHE_TTL_MS
+        value: 12000
+      - key: FEE_CACHE_TTL_MS
+        value: 10000
