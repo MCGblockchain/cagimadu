@@ -174,6 +174,15 @@ NODE_ENV=production npm start
 
 Abra `http://localhost:3333`. Nesse modo, frontend e API utilizam a mesma origem.
 
+## Documentação de negócio
+
+A análise de negócios exigida pelo TAP está reunida em um único documento, [`docs/analise-de-negocios.md`](docs/analise-de-negocios.md), com análise de mercado, análise competitiva, personas e jornadas, proposta de valor, Business Model Canvas, SWOT, requisitos e user stories, matriz de rastreabilidade do TAP, KPIs, viabilidade financeira, riscos, stakeholders, próximos passos e oportunidades pós-projeto.
+
+Duas seções concentram o essencial:
+
+- [Rastreabilidade do TAP](docs/analise-de-negocios.md#rastreabilidade-do-tap), com cada cláusula do TAP mapeada para a evidência no código.
+- [Relatório de validação técnica](docs/validacao/relatorio-de-validacao-tecnica.md), com as evidências de execução real contra a Ethereum Mainnet.
+
 ## Escopo atual
 
 As telas de Blocos e Fees estão conectadas à Ethereum Mainnet. Análise de Mercado ainda usa conteúdo demonstrativo; sua integração com APIs de preço e notícias será definida em uma etapa posterior, sem IA neste primeiro momento.
