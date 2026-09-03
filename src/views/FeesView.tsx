@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { BookIcon, ExternalIcon, FuelIcon, LinkIcon, ShieldIcon } from '../components/Icons'
 import { FeeChart } from '../components/FeeChart'
+import { TransactionPlanner } from '../components/TransactionPlanner'
 import { feeSeries } from '../data'
 import { api } from '../services/api'
 import type { ApiMeta, CurrentFeeData, FeeHistoryData, FeePoint } from '../types'
@@ -137,6 +138,8 @@ export function FeesView() {
         </div>
         <div className="hero-watermark"><FuelIcon size={170} /></div>
       </section>
+
+      <TransactionPlanner current={fee} history={historyData} />
 
       <section className="chart-panel">
         <div className="chart-header"><div><span className="chart-kicker">FEE HISTORY</span><h2>Variação das taxas</h2><p>Base fee + prioridade mediana dos blocos confirmados</p></div><div className="chart-actions"><div className="chart-legend"><i /> Fee (Gwei)</div><div className="segmented">{periods.map((item) => <button key={item.label} className={period.label === item.label ? 'active' : ''} onClick={() => setPeriod(item)}>{item.label}</button>)}</div></div></div>
