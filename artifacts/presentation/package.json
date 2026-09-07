@@ -1,0 +1,11 @@
+{
+  "name": "cagimadu-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node build-presentation.cjs"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  }
+}
